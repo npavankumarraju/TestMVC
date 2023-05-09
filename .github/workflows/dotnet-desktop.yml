@@ -19,7 +19,7 @@ jobs:
       run: |
         #readlink -f TestMVCGithub.csproj 
         #cd /home/runner/work/TestMVC/TestMVC
-        #ls -l
+        ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub/TestMVCGithub.csproj"
         dotnet publish "/home/runner/work/TestMVC/TestMVC/TestMVCGithub/TestMVCGithub.csproj" -c Release -o release --nologo
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1

@@ -18,9 +18,9 @@ jobs:
     - name: Publish .NET Core Project
       run: |
         #readlink -f TestMVCGithub.csproj 
-        cd /home/runner/work/TestMVC/TestMVC
-        ls -l
-        dotnet publish "/home/runner/work/TestMVC/TestMVC/TestMVCGithub.csproj" -c Release -o release --nologo
+        #cd /home/runner/work/TestMVC/TestMVC
+        #ls -l
+        dotnet publish "/home/runner/work/TestMVC/TestMVC/TestMVCGithub/TestMVCGithub.csproj" -c Release -o release --nologo
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:

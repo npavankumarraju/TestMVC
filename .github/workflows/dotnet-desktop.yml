@@ -14,11 +14,17 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+    - name: Install dependencies
+      run: dotnet restore
+      working-directory: TestMVCGithub
     # publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
       run: |
-        find $PWD -type f -name TestMVCGithub.csproj
-        echo $PWD
-        
-
-      
+        cd /home/runner/work/TestMVC/TestMVC
+        dotnet publish TestMVCGithub.csproj -c Release -o release --nologo
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot

@@ -27,4 +27,4 @@ jobs:
           dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
  
     - name: Copy Files To publish Folder
-      run: Copy-Item -Path release\* C:\inetpub\wwwroot -Recurse -Force
+      run: Copy-Item -Path release\* C:\inetpub\wwwroot\ -Recurse -Force

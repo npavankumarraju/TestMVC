@@ -16,16 +16,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+    - name: Stop Web Site
+      run: Stop-IISSite -Name "Default Web Site"
     - name: Checkout
       uses: actions/checkout@v3
-    # publishes Blazor project to the release-folder
+    # publishes Project to the release-folder
     - name: Publish .NET Core Project
       run: |
         #readlink -f TestMVCGithub.csproj 
         #cd /home/runner/work/TestMVC/TestMVC
         #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
-        Stop-IISSite -Name "Default Web Site"
         dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
-        Start-IISSite -Name "Default Web Site"
+    - name: Start Web Site
+      run: Start-IISSite -Name "Default Web Site"
 
    

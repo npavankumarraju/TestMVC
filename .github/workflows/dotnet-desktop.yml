@@ -7,7 +7,7 @@ on:
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:

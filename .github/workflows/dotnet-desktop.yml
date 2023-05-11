@@ -17,7 +17,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Stop Web Site
-      run: Stop-WebSite 'Default Web Site'
+      run: Stop-WebSite 'Default Web Site' -RunAsAdmin
     - name: Checkout
       uses: actions/checkout@v3
     # publishes Project to the release-folder
@@ -28,6 +28,6 @@ jobs:
         #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
         dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
     - name: Start Web Site
-      run: Start-WebSite 'Default Web Site'
+      run: Start-WebSite 'Default Web Site' -RunAsAdmin
 
    

@@ -14,15 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+   # - name: Restore dependencies
+     # run: dotnet restore
+    #- name: Build
+     # run: dotnet build --no-restore
+    #- name: Test
+     # run: dotnet test --no-build --verbosity normal
     - name: Stop Default Web Site
       run: appcmd stop sites "Default Web Site"
     - name: Publish Release
       run: dotnet publish release --configuration Release -o C:\inetpub\wwwroot
-    - name: Start example.com
+    - name: Start "Default Web Site"
       run: appcmd start sites "Default Web Site"

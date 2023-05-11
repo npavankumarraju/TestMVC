@@ -1,28 +1,30 @@
-name: My .NET Action
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
-  build:
+  deploy-to-github-pages:
+    # use ubuntu-latest image to run steps on
     runs-on: self-hosted
-    
-    defaults:
-      run:
-        shell: cmd
-
+    permissions:
+      contents: write
     steps:
-    - uses: actions/checkout@v3
-   # - name: Restore dependencies
-     # run: dotnet restore
-    #- name: Build
-     # run: dotnet build --no-restore
-    #- name: Test
-     # run: dotnet test --no-build --verbosity normal
-    - name: Stop Default Web Site
-      run: stop sites "Default Web Site"
-    - name: Publish Release
-      run: dotnet publish release --configuration Release -o C:\inetpub\wwwroot
-    - name: Start "Default Web Site"
-      run: start sites "Default Web Site"
+    # sets up .NET Core SDK 6.0
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Checkout
+      uses: actions/checkout@v3
+    # publishes Blazor project to the release-folder
+    - name: Publish .NET Core Project
+      run: |
+        #readlink -f TestMVCGithub.csproj 
+        #cd /home/runner/work/TestMVC/TestMVC
+        #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
+          dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
+ 
+    - name: Copy Files To publish Folder
+      run: Copy-Item -Path release\* C:\inetpub\wwwroot -Recurse -Force

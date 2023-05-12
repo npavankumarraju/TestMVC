@@ -24,7 +24,10 @@ jobs:
         #readlink -f TestMVCGithub.csproj 
         #cd /home/runner/work/TestMVC/TestMVC
         #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
-          dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
+          dotnet publish "D:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
  
-    - name: Copy Files To publish Folder
-      run: Copy-Item -Path release\* C:\inetpub\wwwroot\ -Recurse -Force
+    - name: Deploy to IIS
+      run: |
+        iisreset /stop
+        Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
+        iisreset /start

@@ -31,6 +31,7 @@ jobs:
           else
           {
               # We are not running as an administrator, so relaunch as administrator
+              Write-Host New Process
 
               # Create a new process object that starts PowerShell
               $newProcess = New-Object System.Diagnostics.ProcessStartInfo "PowerShell";
@@ -44,6 +45,7 @@ jobs:
 
               # Start the new process
               [System.Diagnostics.Process]::Start($newProcess);
+              Write-Host Process Running
 
               # Exit from the current, unelevated, process
               Exit;

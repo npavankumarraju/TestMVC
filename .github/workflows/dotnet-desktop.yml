@@ -28,6 +28,7 @@ jobs:
  
     - name: Deploy to IIS
       run: |
-        powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /STOP}
-        Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
-        powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /START}
+        #powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /STOP}
+        iisreset 3.17.154.176 /STOP
+        #Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
+        #powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /START}

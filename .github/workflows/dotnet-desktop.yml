@@ -14,4 +14,4 @@ jobs:
       - name: Build
         shell: pwsh
         run: |
-          .\run_as.ps1
+          '& .\run_as.ps1'

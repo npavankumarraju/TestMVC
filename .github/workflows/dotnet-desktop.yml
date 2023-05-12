@@ -27,6 +27,7 @@ jobs:
         dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
  
     - name: Deploy to IIS
+      shell: pwsh
       run: |
         #powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /STOP}
         iisreset 3.17.154.176 /STOP

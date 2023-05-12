@@ -13,5 +13,4 @@ jobs:
     steps:
       - name: Deploy to IIS
         run: |
-          iisreset /STOP
-        shell: powershell
+          net stop W3SVC

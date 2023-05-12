@@ -11,25 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-    # sets up .NET Core SDK 6.0
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-    - name: Checkout
-      uses: actions/checkout@v3
-    # publishes Blazor project to the release-folder
-    - name: Publish .NET Core Project
-      run: |
-        #readlink -f TestMVCGithub.csproj 
-        #cd /home/runner/work/TestMVC/TestMVC
-        #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
-        dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
- 
-    - name: Deploy to IIS
-      run: |
-        #powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /STOP}
-        iisreset 3.17.154.176 /STOP
-        #Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
-        #powershell invoke-command -computername "3.17.154.176" -scriptblock {iisreset /START}
-      shell: pwsh
+      - name: Deploy to IIS
+        run: |
+          iisreset 3.17.154.176 /STOP
+        shell: pwsh

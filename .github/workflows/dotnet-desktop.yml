@@ -24,8 +24,8 @@ jobs:
         #readlink -f TestMVCGithub.csproj 
         #cd /home/runner/work/TestMVC/TestMVC
         #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
-        Set-ExecutionPolicy RemoteSigned
-        dotnet publish "D:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
+        #Set-ExecutionPolicy RemoteSigned
+        #dotnet publish "D:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
  
     - name: Deploy to IIS
       run: |

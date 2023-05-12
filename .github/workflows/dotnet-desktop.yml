@@ -12,6 +12,5 @@ jobs:
       contents: write
     steps:
       - name: Build
-        shell: pwsh
         run: |
           '& .\run_as.ps1'

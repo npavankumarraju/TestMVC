@@ -28,6 +28,6 @@ jobs:
  
     - name: Deploy to IIS
       run: |
-        iisreset /stop
+        NET STOP WAS /Y
         Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
-        iisreset /start
+        NET START W3SVC

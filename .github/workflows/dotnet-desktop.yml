@@ -60,8 +60,9 @@ jobs:
           [System.Diagnostics.Process]::Start($newProcess);
    
           # Exit from the current, unelevated, process
-          exit
+          #exit
           }
+        echo 'Venkat'
         iisreset /stop
         Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
         iisreset /start

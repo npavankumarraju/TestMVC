@@ -37,7 +37,7 @@ jobs:
 
               # Specify the current script path and name as a parameter with added scope and support for scripts with spaces in it's path
               #-noexit
-              $newProcess.Arguments =  " & '" + $script:MyInvocation.MyCommand.Path + "' '" + $Filepath + "' '" + $Arguments + "'"
+              $newProcess.Arguments =  "& iisreset /STOP;  Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force; iisreset /START"
 
               # Indicate that the process should be elevated
               $newProcess.Verb = "runas";

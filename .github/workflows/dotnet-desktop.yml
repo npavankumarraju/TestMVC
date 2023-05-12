@@ -46,7 +46,7 @@ jobs:
               # Start the new process
               [System.Diagnostics.Process]::Start($newProcess);
               Write-Host Process Running
-              $commandline = "& iisreset /STOP;  Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force; iisreset /START"
+              $commandline = "& iisreset /STOP -Force;  Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force; iisreset /START"
 
               Write-Host Executing $commandline;
 

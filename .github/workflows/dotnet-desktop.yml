@@ -29,6 +29,6 @@ jobs:
     - name: Deploy to IIS
       run: |
         Set-ExecutionPolicy Bypass -Scope CurrentUser
-        NET STOP WAS /Y
+        iisreset /stop
         Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
-        NET START W3SVC
+        iisreset /start

@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Deploy to IIS
         run: |
-          net stop W3SVC
+          ./run_as.ps1

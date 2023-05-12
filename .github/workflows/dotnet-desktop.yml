@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Deploy to IIS
         run: |
-          ./run_as.ps1
+          ./run_as.ps1 Y

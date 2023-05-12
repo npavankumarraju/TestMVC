@@ -14,4 +14,4 @@ jobs:
       - name: Deploy to IIS
         run: |
           iisreset /STOP
-        shell: pwsh
+        shell: powershell

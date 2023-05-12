@@ -11,6 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Deploy to IIS
+      - name: Build
+        shell: pwsh
         run: |
-          ./run_as.ps1 Y
+          .\run_as.ps1

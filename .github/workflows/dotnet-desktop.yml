@@ -1,16 +1,33 @@
-name: Deploy to GitHub Pages
+name: Deploy to Self Hosted Runner Windows
 
-on: workflow_dispatch
-  #push:
-    #branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
-  deploy-to-github-pages:
+  PublishDotNetMVCAppToIIS:
     # use ubuntu-latest image to run steps on
     runs-on: self-hosted
     permissions:
       contents: write
     steps:
-      - name: Build
-        run: |
-          iisreset /STOP
+    # sets up .NET Core SDK 6.0
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Checkout
+      uses: actions/checkout@v3
+    # publishes Blazor project to the release-folder
+    - name: Publish .NET Core Project
+      run: |
+        #readlink -f TestMVCGithub.csproj 
+        #cd /home/runner/work/TestMVC/TestMVC
+        #ls -l "/home/runner/work/TestMVC/TestMVC/TestMVCGithub"
+        dotnet publish "C:/actions-runner/_work/TestMVC/TestMVC/TestMVCGithub.sln" -c Release -o release --nologo
+ 
+    - name: Deploy to IIS
+      run: |
+        iisreset /stop
+        Copy-Item ./release/* C:/inetpub/wwwroot/ -Recurse -Force
+        iisreset /start

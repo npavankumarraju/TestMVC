@@ -1,8 +1,6 @@
 name: Deploy to Self Hosted Runner Windows
 
-on:
-  push:
-    branches: [ "main" ]
+on: workflow_dispatch
 
 jobs:
   PublishDotNetMVCAppToIIS:

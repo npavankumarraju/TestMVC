@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   PublishDotNetMVCAppToIIS:
-    # use ubuntu-latest image to run steps on
+    if: github.actor == 'venkatkonda'
     runs-on: self-hosted
     permissions:
       contents: write
